@@ -68,7 +68,14 @@ export function playNote(note: string, duration = 0.5): void {
   }
 
   const frequency = noteFrequencies[note];
-  if (!frequency) return;
+  
+  // Debug information to help identify issues
+  console.log(`Playing note: ${note}, Frequency: ${frequency}`);
+  
+  if (!frequency) {
+    console.warn(`No frequency found for note: ${note}`);
+    return;
+  }
 
   // Create oscillator
   const oscillator = audioContext.createOscillator();

@@ -49,17 +49,6 @@ const Piano: React.FC<PianoProps> = ({ rootNote, scaleType }) => {
   const whiteKeys = keys.filter(key => !key.isBlack);
   const blackKeys = keys.filter(key => key.isBlack);
 
-  // Map of indices where black keys should appear
-  const blackKeyMap: Record<number, boolean> = {
-    0: true,  // C#
-    1: true,  // D#
-    2: false, // No black key after E
-    3: true,  // F#
-    4: true,  // G#
-    5: true,  // A#
-    6: false  // No black key after B
-  };
-
   return (
     <div className="piano-container w-full max-w-3xl mx-auto" onClick={initializeAudio}>
       <div className="piano-keyboard relative rounded-md overflow-hidden">
@@ -80,34 +69,30 @@ const Piano: React.FC<PianoProps> = ({ rootNote, scaleType }) => {
         <div className="absolute top-0 left-0 w-full">
           <div className="flex h-[100px]">
             {whiteKeys.map((whiteKey, index) => {
-              // Get the current octave group (0-6 represents the 7 white keys in an octave)
-              const octavePosition = index % 7;
-              
-              // Skip positions where no black keys exist (after E and B)
-              if (!blackKeyMap[octavePosition]) {
+              // Determine if we need a black key after this white key
+              // No black keys after E and B
+              if (whiteKey.baseNote === 'E' || whiteKey.baseNote === 'B') {
                 return <div key={`spacer-${index}`} className="flex-1"></div>;
               }
               
-              // Find the corresponding black key
+              // Find the black key that comes after this white key
               const blackKey = blackKeys.find(bk => {
-                const whiteKeyNote = whiteKey.baseNote;
-                const blackKeyNote = bk.baseNote;
-                return blackKeyNote === `${whiteKeyNote}#` || 
-                       (whiteKeyNote === 'E' && blackKeyNote === 'F#') ||
-                       (whiteKeyNote === 'B' && blackKeyNote === 'C#');
+                return bk.position === whiteKey.position + 1;
               });
+              
+              if (!blackKey) {
+                return <div key={`spacer-${index}`} className="flex-1"></div>;
+              }
               
               return (
                 <div key={`black-key-position-${index}`} className="flex-1 relative">
-                  {blackKey && (
-                    <div className="absolute w-[70%] right-0 transform translate-x-1/2">
-                      <PianoKey
-                        keyData={blackKey}
-                        isInScale={checkIsInScale(blackKey.note)}
-                        onPlay={handlePlayNote}
-                      />
-                    </div>
-                  )}
+                  <div className="absolute w-[70%] right-0 transform translate-x-1/2">
+                    <PianoKey
+                      keyData={blackKey}
+                      isInScale={checkIsInScale(blackKey.note)}
+                      onPlay={handlePlayNote}
+                    />
+                  </div>
                 </div>
               );
             })}
