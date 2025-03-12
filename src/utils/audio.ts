@@ -10,7 +10,7 @@ export function initAudio(): AudioContext {
   return audioContext;
 }
 
-// Map of note names to frequencies
+// Map of note names to frequencies (Middle C is C4 at 261.63 Hz)
 const noteFrequencies: Record<string, number> = {
   'C3': 130.81, 'C#3': 138.59, 'D3': 146.83, 'D#3': 155.56, 'E3': 164.81, 'F3': 174.61,
   'F#3': 185.00, 'G3': 196.00, 'G#3': 207.65, 'A3': 220.00, 'A#3': 233.08, 'B3': 246.94,
@@ -32,13 +32,14 @@ export type PianoKey = {
 export function generatePianoKeys(): PianoKey[] {
   const keys: PianoKey[] = [];
   const baseNotes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-  const startOctave = 3; // Middle C is C4, start one octave below
+  const startOctave = 3; // Start at C3
+  const endOctave = 5;   // End at C5
   
   let position = 0;
-  for (let octave = startOctave; octave <= startOctave + 2; octave++) {
+  for (let octave = startOctave; octave <= endOctave; octave++) {
     for (let i = 0; i < baseNotes.length; i++) {
       // Stop after C5 to get exactly 2 octaves from C3 to C5
-      if (octave === startOctave + 2 && i > 0) break;
+      if (octave === endOctave && i > 0) break;
       
       const baseNote = baseNotes[i];
       const note = `${baseNote}${octave}`;

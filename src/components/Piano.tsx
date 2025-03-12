@@ -45,17 +45,28 @@ const Piano: React.FC<PianoProps> = ({ rootNote, scaleType }) => {
     return isNoteInScale(baseNote, currentScale);
   };
   
-  // Group keys to separate white and black keys for rendering
+  // Split keys into white and black
   const whiteKeys = keys.filter(key => !key.isBlack);
   const blackKeys = keys.filter(key => key.isBlack);
 
+  // Map of indices where black keys should appear
+  const blackKeyMap: Record<number, boolean> = {
+    0: true,  // C#
+    1: true,  // D#
+    2: false, // No black key after E
+    3: true,  // F#
+    4: true,  // G#
+    5: true,  // A#
+    6: false  // No black key after B
+  };
+
   return (
     <div className="piano-container w-full max-w-3xl mx-auto" onClick={initializeAudio}>
-      <div className="piano-keyboard relative flex h-[160px] rounded-md overflow-hidden">
-        {/* White keys - render first as the base */}
-        <div className="flex flex-1 relative">
-          {whiteKeys.map((key) => (
-            <div key={key.note} className="flex-1 relative">
+      <div className="piano-keyboard relative rounded-md overflow-hidden">
+        {/* White keys layout */}
+        <div className="flex h-[160px]">
+          {whiteKeys.map((key, index) => (
+            <div key={key.note} className="relative flex-1">
               <PianoKey
                 keyData={key}
                 isInScale={checkIsInScale(key.note)}
@@ -65,30 +76,43 @@ const Piano: React.FC<PianoProps> = ({ rootNote, scaleType }) => {
           ))}
         </div>
         
-        {/* Black keys - overlay on top with absolute positioning */}
-        {blackKeys.map((key) => {
-          // Find the index of the corresponding white key to position the black key
-          const whiteKeyIndex = whiteKeys.findIndex(k => 
-            k.position < key.position && whiteKeys.find(next => next.position > key.position)
-          );
-          
-          return (
-            <div 
-              key={key.note}
-              className="absolute top-0"
-              style={{ 
-                left: `calc(${whiteKeyIndex + 0.5} * (100% / ${whiteKeys.length}))`,
-                width: `calc(100% / ${whiteKeys.length})`
-              }}
-            >
-              <PianoKey
-                keyData={key}
-                isInScale={checkIsInScale(key.note)}
-                onPlay={handlePlayNote}
-              />
-            </div>
-          );
-        })}
+        {/* Black keys layout */}
+        <div className="absolute top-0 left-0 w-full">
+          <div className="flex h-[100px]">
+            {whiteKeys.map((whiteKey, index) => {
+              // Get the current octave group (0-6 represents the 7 white keys in an octave)
+              const octavePosition = index % 7;
+              
+              // Skip positions where no black keys exist (after E and B)
+              if (!blackKeyMap[octavePosition]) {
+                return <div key={`spacer-${index}`} className="flex-1"></div>;
+              }
+              
+              // Find the corresponding black key
+              const blackKey = blackKeys.find(bk => {
+                const whiteKeyNote = whiteKey.baseNote;
+                const blackKeyNote = bk.baseNote;
+                return blackKeyNote === `${whiteKeyNote}#` || 
+                       (whiteKeyNote === 'E' && blackKeyNote === 'F#') ||
+                       (whiteKeyNote === 'B' && blackKeyNote === 'C#');
+              });
+              
+              return (
+                <div key={`black-key-position-${index}`} className="flex-1 relative">
+                  {blackKey && (
+                    <div className="absolute w-[70%] right-0 transform translate-x-1/2">
+                      <PianoKey
+                        keyData={blackKey}
+                        isInScale={checkIsInScale(blackKey.note)}
+                        onPlay={handlePlayNote}
+                      />
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );

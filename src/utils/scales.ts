@@ -17,21 +17,21 @@ export type ScaleType =
 
 export type Note = 'C' | 'C#' | 'D' | 'D#' | 'E' | 'F' | 'F#' | 'G' | 'G#' | 'A' | 'A#' | 'B';
 
-// Scale intervals in semitones
+// Scale intervals in semitones - verified against standard music theory
 const scaleIntervals: Record<ScaleType, number[]> = {
-  major: [0, 2, 4, 5, 7, 9, 11],
-  minor: [0, 2, 3, 5, 7, 8, 10],
-  harmonicMinor: [0, 2, 3, 5, 7, 8, 11],
-  melodicMinor: [0, 2, 3, 5, 7, 9, 11],
-  blues: [0, 3, 5, 6, 7, 10],
-  bebop: [0, 2, 4, 5, 7, 9, 10, 11],
-  ionian: [0, 2, 4, 5, 7, 9, 11],
-  dorian: [0, 2, 3, 5, 7, 9, 10],
-  phrygian: [0, 1, 3, 5, 7, 8, 10],
-  lydian: [0, 2, 4, 6, 7, 9, 11],
-  mixolydian: [0, 2, 4, 5, 7, 9, 10],
-  aeolian: [0, 2, 3, 5, 7, 8, 10],
-  locrian: [0, 1, 3, 5, 6, 8, 10]
+  major: [0, 2, 4, 5, 7, 9, 11],                // W-W-H-W-W-W-H
+  minor: [0, 2, 3, 5, 7, 8, 10],                // W-H-W-W-H-W-W (natural minor)
+  harmonicMinor: [0, 2, 3, 5, 7, 8, 11],        // W-H-W-W-H-W+H-H
+  melodicMinor: [0, 2, 3, 5, 7, 9, 11],         // W-H-W-W-W-W-H (ascending)
+  blues: [0, 3, 5, 6, 7, 10],                   // Minor pentatonic + blue note
+  bebop: [0, 2, 4, 5, 7, 9, 10, 11],            // Major with added chromatic notes
+  ionian: [0, 2, 4, 5, 7, 9, 11],               // Same as major
+  dorian: [0, 2, 3, 5, 7, 9, 10],               // W-H-W-W-W-H-W
+  phrygian: [0, 1, 3, 5, 7, 8, 10],             // H-W-W-W-H-W-W
+  lydian: [0, 2, 4, 6, 7, 9, 11],               // W-W-W-H-W-W-H
+  mixolydian: [0, 2, 4, 5, 7, 9, 10],           // W-W-H-W-W-H-W
+  aeolian: [0, 2, 3, 5, 7, 8, 10],              // Same as natural minor
+  locrian: [0, 1, 3, 5, 6, 8, 10]               // H-W-W-H-W-W-W
 };
 
 // All notes in chromatic order

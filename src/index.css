@@ -60,12 +60,13 @@
   .piano-keyboard {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transform: rotateX(5deg);
+    height: 160px;
   }
 
   /* White keys */
   .piano-key-white {
     @apply relative bg-piano-white border border-gray-200 rounded-b-md transition-all duration-200;
-    height: 160px;
+    height: 100%;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
   }
 
@@ -77,11 +78,10 @@
 
   /* Black keys */
   .piano-key-black {
-    @apply absolute bg-piano-black rounded-b-md transition-all duration-200 z-10;
-    width: 65%;
+    @apply bg-piano-black rounded-b-md transition-all duration-200;
+    width: 70%;
     height: 100px;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
-    top: 0;
   }
 
   .piano-key-black.active,
@@ -137,4 +137,16 @@
     transform: translateY(0);
     transition: opacity 300ms, transform 300ms;
   }
+}
+
+/* Piano key press animation */
+@keyframes piano-key-press {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(2px); }
+}
+
+/* Highlight pulse animation */
+@keyframes pulse-highlight {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
 }
