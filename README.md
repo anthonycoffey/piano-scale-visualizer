@@ -1,69 +1,33 @@
-# Welcome to your Lovable project
+# Piano Scale Symphony
 
-## Project info
+A beautiful interactive piano scale visualizer to help you learn and explore musical scales.
 
-**URL**: https://lovable.dev/projects/74d66718-77e2-4f81-ba5e-654217d61d9b
+## Overview
 
-## How can I edit this code?
+Piano Scale Symphony is an educational tool that allows musicians of all levels to visualize and play different musical scales on a virtual piano keyboard. Select any root note and scale type to instantly see the corresponding notes highlighted on the piano.
 
-There are several ways of editing your application.
+## Features
 
-**Use Lovable**
+- **Interactive Piano Interface**: Click on piano keys to hear the notes
+- **Multiple Root Notes**: Choose from all 12 root notes (C, C♯, D, D♯, E, F, F♯, G, G♯, A, A♯, B)
+- **Diverse Scale Library**:
+  - **Common Scales**: Major, Natural Minor, Harmonic Minor, Melodic Minor
+  - **Jazz Scales**: Bebop
+  - **Other Scales**: Blues
+  - **Modes**: Ionian, Dorian, Phrygian, Lydian, Mixolydian, Aeolian, Locrian
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/74d66718-77e2-4f81-ba5e-654217d61d9b) and start prompting.
+## How To Use
 
-Changes made via Lovable will be committed automatically to this repo.
+1. Select a root note from the dropdown menu
+2. Choose a scale type from the categories provided
+3. The corresponding scale will be highlighted on the virtual piano
+4. Click on the keys to play and hear the notes
 
-**Use your preferred IDE**
+## Example
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+When you select C Major, the notes C-D-E-F-G-A-B-C will be highlighted on the keyboard, allowing you to visualize and play the scale.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Get Started
 
-Follow these steps:
+Simply load the application in your browser and start exploring different scales to enhance your musical knowledge.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/74d66718-77e2-4f81-ba5e-654217d61d9b) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
