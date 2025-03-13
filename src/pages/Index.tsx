@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Piano from "@/components/Piano";
 import ScaleSelector from "@/components/ScaleSelector";
 import { Note, ScaleType, scaleNames, formatNote } from "@/utils/scales";
