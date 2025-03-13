@@ -1,12 +1,11 @@
-
-import React, { useState } from 'react';
-import Piano from '@/components/Piano';
-import ScaleSelector from '@/components/ScaleSelector';
-import { Note, ScaleType, scaleNames, formatNote } from '@/utils/scales';
+import React, { useState } from "react";
+import Piano from "@/components/Piano";
+import ScaleSelector from "@/components/ScaleSelector";
+import { Note, ScaleType, scaleNames, formatNote } from "@/utils/scales";
 
 const Index = () => {
-  const [rootNote, setRootNote] = useState<Note>('C');
-  const [scaleType, setScaleType] = useState<ScaleType>('major');
+  const [rootNote, setRootNote] = useState<Note>("C");
+  const [scaleType, setScaleType] = useState<ScaleType>("major");
 
   const handleRootChange = (note: Note) => {
     setRootNote(note);
@@ -26,10 +25,11 @@ const Index = () => {
           Learn & Explore Piano Scales
         </h1>
         <p className="text-muted-foreground max-w-lg mx-auto">
-          Visualize and play different scales on a virtual piano. Select a root note and scale type to see the notes highlighted.
+          Visualize and play different scales on a virtual piano. Select a root
+          note and scale type to see the notes highlighted.
         </p>
       </div>
-      
+
       <div className="w-full max-w-3xl space-y-8">
         <ScaleSelector
           selectedRoot={rootNote}
@@ -37,7 +37,7 @@ const Index = () => {
           onRootChange={handleRootChange}
           onScaleChange={handleScaleChange}
         />
-        
+
         <div className="text-center mb-4">
           <div className="glass inline-block px-5 py-3 rounded-full text-sm font-medium">
             <span>
@@ -45,13 +45,27 @@ const Index = () => {
             </span>
           </div>
         </div>
-        
+
         <Piano rootNote={rootNote} scaleType={scaleType} />
-        
+
         <div className="text-center text-xs text-muted-foreground mt-8">
-          Click on the keys to play. The highlighted keys show the selected scale.
+          Click on the keys to play. The highlighted keys show the selected
+          scale.
         </div>
       </div>
+      <footer>
+        <div className="text-sm text-muted-foreground text-center mt-8">
+          Designed by{" "}
+          <a
+            href="https://coffey.codes"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-primary hover:underline"
+          >
+            Anthony Coffey
+          </a>
+        </div>
+      </footer>
     </div>
   );
 };
