@@ -31,3 +31,6 @@ When you select C Major, the notes C-D-E-F-G-A-B-C will be highlighted on the ke
 
 Simply load the application in your browser and start exploring different scales to enhance your musical knowledge.
 
+## Live Demo
+
+Piano Scale Visualizer: [Live Demo](https://anthonycoffey.github.io/piano-scale-visualizer/)
