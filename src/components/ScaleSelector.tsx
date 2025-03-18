@@ -1,6 +1,13 @@
-import React from 'react';
-import { cn } from '@/lib/utils';
-import { Note, ScaleType, allNotes, scaleCategories, scaleNames, formatNote } from '@/utils/scales';
+import React from "react";
+import { cn } from "@/lib/utils";
+import {
+  Note,
+  ScaleType,
+  allNotes,
+  scaleCategories,
+  scaleNames,
+  formatNote,
+} from "@/utils/scales";
 
 interface ScaleSelectorProps {
   selectedRoot: Note;
@@ -21,8 +28,10 @@ const ScaleSelector: React.FC<ScaleSelectorProps> = ({
         <div className="space-y-6">
           {/* Root Note Selector */}
           <div className="space-y-2">
-            <label className="text-sm font-medium text-muted-foreground">Root Note</label>
-            <div className="flex flex-wrap gap-2">
+            <label className="text-sm font-medium text-muted-foreground">
+              Key
+            </label>
+            <div className="flex flex-wrap gap-2 justify-between">
               {allNotes.map((note) => (
                 <button
                   key={note}
@@ -37,15 +46,17 @@ const ScaleSelector: React.FC<ScaleSelectorProps> = ({
               ))}
             </div>
           </div>
-          
+
           {/* Scale Type Selector */}
           <div className="space-y-4">
-            <label className="text-sm font-medium text-muted-foreground">Scale Type</label>
-            
+            <label className="text-sm font-medium text-muted-foreground">
+              Scale Type
+            </label>
+
             {/* Basic Scales */}
-            <div className="space-y-2">
+            <div className="space-y-4">
               <p className="text-xs text-muted-foreground">Common Scales</p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 justify-center">
                 {scaleCategories.basic.map((scale) => (
                   <button
                     key={scale}
@@ -60,11 +71,13 @@ const ScaleSelector: React.FC<ScaleSelectorProps> = ({
                 ))}
               </div>
             </div>
-            
+
             {/* Jazz Scales */}
-            <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Jazz Scales</p>
-              <div className="flex flex-wrap gap-2">
+            <div className="space-y-4">
+              <p className="text-xs text-muted-foreground">
+                Jazz / Blues Scales
+              </p>
+              <div className="flex flex-wrap gap-2 justify-center">
                 {scaleCategories.jazz.map((scale) => (
                   <button
                     key={scale}
@@ -77,13 +90,6 @@ const ScaleSelector: React.FC<ScaleSelectorProps> = ({
                     {scaleNames[scale]}
                   </button>
                 ))}
-              </div>
-            </div>
-            
-            {/* Other Scales */}
-            <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Other Scales</p>
-              <div className="flex flex-wrap gap-2">
                 {scaleCategories.other.map((scale) => (
                   <button
                     key={scale}
@@ -98,11 +104,11 @@ const ScaleSelector: React.FC<ScaleSelectorProps> = ({
                 ))}
               </div>
             </div>
-            
+
             {/* Modes */}
-            <div className="space-y-2">
+            <div className="space-y-4">
               <p className="text-xs text-muted-foreground">Modes</p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 justify-center">
                 {scaleCategories.modes.map((scale) => (
                   <button
                     key={scale}

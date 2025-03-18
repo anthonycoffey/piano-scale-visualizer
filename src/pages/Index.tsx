@@ -31,26 +31,21 @@ const Index = () => {
       </div>
 
       <div className="w-full max-w-3xl space-y-8">
-        <ScaleSelector
-          selectedRoot={rootNote}
-          selectedScale={scaleType}
-          onRootChange={handleRootChange}
-          onScaleChange={handleScaleChange}
-        />
-
+        <Piano rootNote={rootNote} scaleType={scaleType} />
         <div className="text-center mb-4">
-          <div className="glass inline-block px-5 py-3 rounded-full text-sm font-medium">
+          <div className="glass inline-block px-5 py-3 rounded-full text-xl font-medium">
             <span>
               {formatNote(rootNote)} {scaleNames[scaleType]}
             </span>
           </div>
         </div>
-
-        <Piano rootNote={rootNote} scaleType={scaleType} />
-
         <div className="text-center text-xs text-muted-foreground mt-8">
-          Click on the keys to play. The highlighted keys show the selected
-          scale.
+          <ScaleSelector
+            selectedRoot={rootNote}
+            selectedScale={scaleType}
+            onRootChange={handleRootChange}
+            onScaleChange={handleScaleChange}
+          />
         </div>
       </div>
       <footer>
