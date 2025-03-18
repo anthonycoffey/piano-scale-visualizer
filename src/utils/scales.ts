@@ -34,6 +34,21 @@ const scaleIntervals: Record<ScaleType, number[]> = {
   locrian: [0, 1, 3, 5, 6, 8, 10]               // H-W-W-H-W-W-W
 };
 
+export const displayNote = (note: string) => {
+  // If you want to display flats instead of sharps
+  if (note.includes("#")) {
+    const flatEquivalents: Record<string, string> = {
+      "C#": "D♭",
+      "D#": "E♭",
+      "F#": "G♭",
+      "G#": "A♭",
+      "A#": "B♭",
+    };
+    return flatEquivalents[note] || note;
+  }
+  return note;
+};
+
 // All notes in chromatic order
 export const allNotes: Note[] = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 

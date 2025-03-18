@@ -51,13 +51,7 @@ const PianoKey: React.FC<PianoKeyProps> = ({
       role="button"
       aria-label={`Piano key ${note}`}
       tabIndex={0}
-    >
-      {!isBlack && (
-        <div className="absolute bottom-2 left-0 right-0 text-center text-xs text-gray-500">
-          {baseNote}
-        </div>
-      )}
-    </div>
+    ></div>
   );
 };
 

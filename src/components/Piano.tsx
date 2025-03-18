@@ -61,10 +61,10 @@ const Piano: React.FC<PianoProps> = ({ rootNote, scaleType }) => {
 
   return (
     <div
-      className="piano-container w-full max-w-3xl mx-auto"
+      className="piano-container w-full max-w-3xl mx-auto p-4 "
       onClick={initializeAudio}
     >
-      <div className="piano-keyboard relative rounded-md overflow-hidden">
+      <div className="piano-keyboard relative">
         {/* White keys layout */}
         <div className="flex h-[160px]">
           {whiteKeys.map((key, index) => (

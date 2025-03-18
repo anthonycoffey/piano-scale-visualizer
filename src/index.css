@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
+    --background: 0 0% 10%; /* Very dark gray */
+    --foreground: 0 0% 90%; /* Light gray for contrast */
 
     --card: 0 0% 100%;
     --card-foreground: 222 47% 11%;
@@ -36,7 +36,7 @@
 
     --piano-white: 0 0% 100%;
     --piano-black: 0 0% 15%;
-    --piano-highlight: 120 100% 40%;
+    --piano-highlight: 186 100% 60%;
   }
 
   * {
@@ -52,19 +52,19 @@
 
   /* Custom piano styles */
   .piano-container {
-    perspective: 800px;
+    perspective: 50px;
     transform-style: preserve-3d;
   }
 
   .piano-keyboard {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgb(255 255 255 / 10%);
     transform: rotateX(5deg);
     height: 160px;
   }
 
   /* White keys */
   .piano-key-white {
-    @apply relative bg-piano-white border border-gray-200 rounded-b-md transition-all duration-200;
+    @apply relative bg-piano-white border border-gray-900 rounded-b-md transition-all duration-200;
     height: 100%;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
   }
@@ -96,28 +96,28 @@
 
   .root-note {
     border-top: none;
-    border-left: 1px inset red;
-    border-right: 1px inset red;
-    border-bottom: 1px inset red;
+    border-left: 3px solid #ff3366;
+    border-right: 3px solid #ff3366;
+    border-bottom: 3px solid #ff3366;
   }
 
   .piano-key-black.root-note {
     border-top: none;
-    border-left: 2px inset red;
-    border-right: 2px inset red;
-    border-bottom: 2px inset red;
+    border-left: 4px solid rgb(255, 41, 105);
+    border-right: 3px solid rgb(255, 41, 105);
+    border-bottom: 3px solid rgb(255, 41, 105);
   }
 
   .piano-key-white.in-scale::before {
     content: "";
-    background-color: hsl(var(--piano-highlight) / 0.15);
-    animation: pulse-highlight 2s ease-in-out infinite;
+    background-color: hsl(var(--piano-highlight) / 0.3);
+    animation: pulse-highlight 0.5s ease-in-out infinite;
   }
 
   .piano-key-black.in-scale::before {
     content: "";
     background-color: hsl(var(--piano-highlight) / 0.3);
-    animation: pulse-highlight 2s ease-in-out infinite;
+    animation: pulse-highlight 0.5s ease-in-out infinite;
   }
 
   /* Glass morphism */

@@ -1,11 +1,17 @@
 import { useState } from "react";
 import Piano from "@/components/Piano";
 import ScaleSelector from "@/components/ScaleSelector";
-import { Note, ScaleType, scaleNames, formatNote } from "@/utils/scales";
+import {
+  Note,
+  ScaleType,
+  scaleNames,
+  formatNote,
+  displayNote,
+} from "@/utils/scales";
 
 const Index = () => {
-  const [rootNote, setRootNote] = useState<Note>("C");
-  const [scaleType, setScaleType] = useState<ScaleType>("major");
+  const [rootNote, setRootNote] = useState<Note>("D#");
+  const [scaleType, setScaleType] = useState<ScaleType>("mixolydian");
 
   const handleRootChange = (note: Note) => {
     setRootNote(note);
@@ -16,26 +22,25 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-2 animate-fade-in">
-      <div className="text-center mb-4">
-        <div className="inline-block px-3 py-1 mb-2 bg-secondary text-xs font-medium rounded-full">
+    <div className="min-h-screen flex flex-col items-center justify-center animate-fade-in">
+      <div className="text-center mb-2">
+        <div className="inline-block px-3 py-1 bg-primary text-xs font-medium rounded-full mb-2">
           Learn & Explore Piano Scales
         </div>
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
           Piano Scale Visualizer
         </h1>
         <p className="text-muted-foreground max-w-lg mx-auto">
-          Visualize and play different scales on a virtual piano. Select a root
-          note and scale type to see the notes highlighted.
+          Visualize and play different scales on a virtual piano.
         </p>
       </div>
 
       <div className="w-full max-w-3xl space-y-6">
         <Piano rootNote={rootNote} scaleType={scaleType} />
         <div className="text-center">
-          <div className="glass inline-block px-5 py-3 rounded-full text-xl font-medium">
+          <div className="inline-block px-5 py-3 rounded-full text-2xl bg-secondary text-muted-foreground font-medium">
             <span>
-              {formatNote(rootNote)} {scaleNames[scaleType]}
+              {displayNote(rootNote)} {scaleNames[scaleType]}
             </span>
           </div>
         </div>
@@ -55,7 +60,7 @@ const Index = () => {
             href="https://coffey.codes"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-bold text-primary hover:underline"
+            className="font-bold text-muted-foreground hover:underline"
           >
             Anthony Coffey
           </a>
