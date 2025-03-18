@@ -38,7 +38,7 @@ const Index = () => {
       <div className="w-full max-w-3xl space-y-6">
         <Piano rootNote={rootNote} scaleType={scaleType} />
         <div className="text-center">
-          <div className="inline-block px-5 py-3 rounded-full text-2xl bg-secondary text-muted-foreground font-medium">
+          <div className="inline-block px-5 py-3 rounded-full text-2xl bg-primary text-muted-background font-medium">
             <span>
               {displayNote(rootNote)} {scaleNames[scaleType]}
             </span>
