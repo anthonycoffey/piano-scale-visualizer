@@ -16,13 +16,13 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-8 animate-fade-in">
-      <div className="mb-8 text-center">
+    <div className="min-h-screen flex flex-col items-center justify-center p-2 animate-fade-in">
+      <div className="text-center mb-4">
         <div className="inline-block px-3 py-1 mb-2 bg-secondary text-xs font-medium rounded-full">
-          Piano Scale Visualizer
-        </div>
-        <h1 className="text-3xl md:text-4xl font-medium tracking-tight mb-2">
           Learn & Explore Piano Scales
+        </div>
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">
+          Piano Scale Visualizer
         </h1>
         <p className="text-muted-foreground max-w-lg mx-auto">
           Visualize and play different scales on a virtual piano. Select a root
@@ -30,9 +30,9 @@ const Index = () => {
         </p>
       </div>
 
-      <div className="w-full max-w-3xl space-y-8">
+      <div className="w-full max-w-3xl space-y-6">
         <Piano rootNote={rootNote} scaleType={scaleType} />
-        <div className="text-center mb-4">
+        <div className="text-center">
           <div className="glass inline-block px-5 py-3 rounded-full text-xl font-medium">
             <span>
               {formatNote(rootNote)} {scaleNames[scaleType]}
@@ -49,7 +49,7 @@ const Index = () => {
         </div>
       </div>
       <footer>
-        <div className="text-sm text-muted-foreground text-center mt-8">
+        <div className="text-sm text-muted-foreground text-center mt-4">
           Designed by{" "}
           <a
             href="https://coffey.codes"

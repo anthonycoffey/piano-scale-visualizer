@@ -1,30 +1,34 @@
-
-import React, { useState } from 'react';
-import { cn } from '@/lib/utils';
-import { PianoKey as PianoKeyType } from '@/utils/audio';
-import { Note } from '@/utils/scales';
+import React, { useState } from "react";
+import { cn } from "@/lib/utils";
+import { PianoKey as PianoKeyType } from "@/utils/audio";
 
 interface PianoKeyProps {
   keyData: PianoKeyType;
   isInScale: boolean;
+  isRootNote: boolean;
   onPlay: (note: string) => void;
 }
 
-const PianoKey: React.FC<PianoKeyProps> = ({ keyData, isInScale, onPlay }) => {
+const PianoKey: React.FC<PianoKeyProps> = ({
+  keyData,
+  isInScale,
+  isRootNote,
+  onPlay,
+}) => {
   const [isActive, setIsActive] = useState(false);
-  
+
   const { note, baseNote, isBlack } = keyData;
-  
+
   // Handle mouse events
   const handleMouseDown = () => {
     setIsActive(true);
     onPlay(note);
   };
-  
+
   const handleMouseUp = () => {
     setIsActive(false);
   };
-  
+
   const handleMouseLeave = () => {
     setIsActive(false);
   };
@@ -32,11 +36,12 @@ const PianoKey: React.FC<PianoKeyProps> = ({ keyData, isInScale, onPlay }) => {
   return (
     <div
       className={cn(
-        isBlack 
-          ? "piano-key-black absolute top-0 z-10" 
+        isBlack
+          ? "piano-key-black absolute top-0 z-10"
           : "piano-key-white relative h-full w-full",
-        isInScale && 'in-scale',
-        isActive && 'active',
+        isInScale && "in-scale",
+        isActive && "active",
+        isRootNote && "root-note"
       )}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
@@ -49,7 +54,7 @@ const PianoKey: React.FC<PianoKeyProps> = ({ keyData, isInScale, onPlay }) => {
     >
       {!isBlack && (
         <div className="absolute bottom-2 left-0 right-0 text-center text-xs text-gray-500">
-          {baseNote.replace('#', '♯')}
+          {baseNote}
         </div>
       )}
     </div>

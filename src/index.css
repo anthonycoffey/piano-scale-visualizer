@@ -94,6 +94,20 @@
     @apply before:absolute before:inset-x-0 before:bottom-0 before:h-full before:rounded-b-md;
   }
 
+  .root-note {
+    border-top: none;
+    border-left: 1px inset red;
+    border-right: 1px inset red;
+    border-bottom: 1px inset red;
+  }
+
+  .piano-key-black.root-note {
+    border-top: none;
+    border-left: 2px inset red;
+    border-right: 2px inset red;
+    border-bottom: 2px inset red;
+  }
+
   .piano-key-white.in-scale::before {
     content: "";
     background-color: hsl(var(--piano-highlight) / 0.15);
